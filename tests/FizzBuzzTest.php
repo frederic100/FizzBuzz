@@ -9,6 +9,8 @@ class FizzBuzzTest extends TestCase
 {
     public function testFizzBuzz(): void
     {
-        $FizzBuzz = new FizzBuzz();
+        $fizzBuzz = new FizzBuzz();
+        $resultat = $fizzBuzz->generateFizzBuzz(1);
+        $this->assertEquals("1", $resultat);
     }
 }
