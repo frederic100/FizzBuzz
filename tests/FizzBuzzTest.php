@@ -2,6 +2,7 @@
 
 namespace FizzBuzz\Tests;
 
+use FizzBuzz\Exceptions\NegativeNotAllowedException;
 use FizzBuzz\FizzBuzz;
 use PHPUnit\Framework\TestCase;
 
@@ -53,5 +54,17 @@ class FizzBuzzTest extends TestCase
         $resultat = $this->fizzBuzz->generateFizzBuzz(30);
         $this->assertEquals("1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16, 17, Fizz, " .
             "19, Buzz, Fizz, 22, 23, Fizz, Buzz, 26, Fizz, 28, 29, FizzBuzz", $resultat);
+    }
+    public function testFizzBuzzNegatif(): void
+    {
+        $this->expectException(NegativeNotAllowedException::class);
+        $this->expectExceptionMessage("'-2' seul un nombre strictement positif est autorisé");
+        $this->fizzBuzz->generateFizzBuzz(-2);
+    }
+    public function testFizzBuzzO(): void
+    {
+        $this->expectException(NegativeNotAllowedException::class);
+        $this->expectExceptionMessage("'0' seul un nombre strictement positif est autorisé");
+        $this->fizzBuzz->generateFizzBuzz(0);
     }
 }

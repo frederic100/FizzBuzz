@@ -2,6 +2,8 @@
 
 namespace FizzBuzz;
 
+use FizzBuzz\Exceptions\NegativeNotAllowedException;
+
 class FizzBuzz
 {
     public const SEPARATEUR = ", ";
@@ -9,8 +11,12 @@ class FizzBuzz
     public const MULTIPLE_BUZZ = 5;
     public const FIZZ = "Fizz";
     public const BUZZ = "Buzz";
+
     public function generateFizzBuzz(int $nombre): string
     {
+        if ($nombre <= 0) {
+            throw new NegativeNotAllowedException($nombre);
+        }
         $result = "";
 
         for ($i = 1; $i < $nombre; $i++) {
