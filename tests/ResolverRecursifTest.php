@@ -5,17 +5,17 @@ namespace FizzBuzz\Tests;
 use FizzBuzz\Exceptions\NegativeNotAllowedException;
 use FizzBuzz\Exceptions\ZeroNotAllowedException;
 use FizzBuzz\FizzBuzz;
-use FizzBuzz\Tests\Exceptions\NegativeNotAllowedTest;
+use FizzBuzz\ResolverRecursif;
 use PHPUnit\Framework\TestCase;
 
-class FizzBuzzTest extends TestCase
+class ResolverRecursifTest extends TestCase
 {
     public FizzBuzz $fizzBuzz;
 
     public function testFizzBuzz(): void
     {
-
-        $resultat = (new FizzBuzz(1))->generateFizzBuzz();
+        $recursif = new ResolverRecursif(1);
+        $resultat = (new FizzBuzz(1, $recursif))->generateFizzBuzz();
         $this->assertEquals("1", $resultat);
     }
     public function testFizzBuzz2(): void
